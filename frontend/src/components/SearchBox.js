@@ -17,6 +17,8 @@ const SearchBox = (props) => {
         (page) => agent.Items.byTitle(query, page),
         agent.Items.byTitle(query)
       );
+    } else {
+      props.onSearch(query, (page) => agent.Items.all(page), agent.Items.all());
     }
   };
 
@@ -30,10 +32,7 @@ const SearchBox = (props) => {
         onChange={handleSearch}
       />
       <div className="input-group-append">
-        <button
-          className="btn btn-outline-light bg-white border-0"
-          onClick={handleSearch}
-        >
+        <button className="btn btn-outline-light bg-white border-0">
           <i className="ion-search h3"></i>
         </button>
       </div>
