@@ -1,10 +1,15 @@
 import ItemPreview from "./ItemPreview";
 import ListPagination from "./ListPagination";
 import React from "react";
+import EmptySearch from "./EmptySearch";
 
 const ItemList = (props) => {
   if (!props.items) {
     return <div className="py-4">Loading...</div>;
+  }
+
+  if (props.items.length === 0 && props.title.length > 0) {
+    return <EmptySearch title={props.title} />;
   }
 
   if (props.items.length === 0) {
