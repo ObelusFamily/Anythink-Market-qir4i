@@ -10,7 +10,7 @@ const Banner = () => {
         <div className="row align-items-center">
           <span id="get-part" className="h3">A Place to get</span>
           <SearchBox />
-          <span className="h3"> the cool stuff</span>
+          <span className="h3">the cool stuff</span>
         </div>
       </div>
     </div>

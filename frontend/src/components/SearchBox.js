@@ -12,11 +12,14 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: APPLY_TITLE_FILTER, title, pager, payload }),
 });
 
-const SearchBox = ({ onSearch }) => {
+const SearchBox = (props) => {
   const handleSearch = (ev) => { 
     const query = ev.target.value;
     if(query.length > 3) {
-      onSearch(query, (page) => agent.Items.byTitle(query, page), agent.Items.byTitle(query));
+      props.onSearch(query,
+        (page) => agent.Items.byTitle(query, page),
+        agent.Items.byTitle(query),
+      );
     }
   }
 
@@ -30,7 +33,10 @@ const SearchBox = ({ onSearch }) => {
       onChange={handleSearch}
       />
       <div className="input-group-append">
-        <button className="btn btn-outline-light bg-white border-0" onClick={handleSearch}>
+        <button 
+        className="btn btn-outline-light bg-white border-0"
+        onClick={handleSearch}
+        >
           <i className="ion-search h3"></i>
         </button>
       </div>
@@ -38,4 +44,4 @@ const SearchBox = ({ onSearch }) => {
   )
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(SearchBox);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);
